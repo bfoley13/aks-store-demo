@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service-workflow
+  namespace: orderservice
+spec:
+  type: LoadBalancer
+  selector:
+    app: order-service-workflow
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
