@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service-workflow
+  labels:
+    app: order-service-workflow
+  namespace: orderservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-service-workflow
+  template:
+    metadata:
+      labels:
+        app: order-service-workflow
+    spec:
+      containers:
+        - name: order-service-workflow
+          image: multicontainertestacr.azurecr.io/order-service:latest
+          ports:
+            - containerPort: 3000
