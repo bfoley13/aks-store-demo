@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service-workflow
+  labels:
+    app: product-service-workflow
+  namespace: productservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-service-workflow
+  template:
+    metadata:
+      labels:
+        app: product-service-workflow
+    spec:
+      containers:
+        - name: product-service-workflow
+          image: multicontainertestacr.azurecr.io/product-service:latest
+          ports:
+            - containerPort: 3002
